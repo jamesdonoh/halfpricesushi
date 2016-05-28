@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import SHOPS from './shops';
+
 class Shop extends React.Component {
     render() {
         return (
@@ -13,16 +15,11 @@ class ShopList extends React.Component {
     render() {
         return (
             <ul>
-                {this.props.shops.map((shop) => <Shop key={shop.id} data={shop}/>)}
+                {this.props.shops.map((shop) => <Shop key={shop.name} data={shop}/>)}
             </ul>
         );
     }
 }
-
-const SHOPS = [
-    { id: 'stockwell', name: 'Stockwell' },
-    { id: 'tufnell', name: 'Tufnell Park' }
-];
 
 ReactDOM.render(
     <ShopList shops={SHOPS} />,
