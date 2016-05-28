@@ -13,15 +13,15 @@ class ShopList extends React.Component {
     render() {
         return (
             <ul>
-                {this.props.shops.map((shop) => <Shop data={shop}/>)}
+                {this.props.shops.map((shop) => <Shop key={shop.id} data={shop}/>)}
             </ul>
         );
     }
 }
 
 const SHOPS = [
-    { name: 'Stockwell' },
-    { name: 'Tufnell Park' }
+    { id: 'stockwell', name: 'Stockwell' },
+    { id: 'tufnell', name: 'Tufnell Park' }
 ];
 
 ReactDOM.render(
