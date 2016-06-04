@@ -4,6 +4,8 @@ import moment from 'moment';
 
 import SHOPS from './shops';
 
+import './shoplist.css';
+
 const DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 const TIME_FORMAT = 'HH:mm';
 

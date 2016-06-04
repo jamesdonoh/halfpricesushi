@@ -1,4 +1,7 @@
 const webpack = require('webpack');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const precss = require('precss');
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
     entry: './main.js',
@@ -16,12 +19,24 @@ module.exports = {
             {
                 test: /\.json$/,
                 loader: 'json'
+            },
+            {
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
             }
         ]
     },
     externals: {
         'react': 'React',
         'react-dom': 'ReactDOM'
+    },
+    plugins: [
+        new ExtractTextPlugin('app.css', {
+            allChunks: true
+        })
+    ],
+    postcss: function () {
+        return [precss, autoprefixer];
     }
 };
 /*
