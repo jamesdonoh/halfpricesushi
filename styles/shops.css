@@ -2,4 +2,5 @@ $blue: #056ef0;
 
 li {
     color: $blue;
+    border: 1px solid green;
 }

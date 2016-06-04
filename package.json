@@ -2,7 +2,10 @@
   "name": "halfpricesushi",
   "version": "1.0.0",
   "description": "Get your sushi but the price, it is half",
-  "main": "index.js",
+  "main": "main.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha"
+  },
   "author": "James Donohue",
   "license": "ISC",
   "dependencies": {
@@ -11,13 +14,19 @@
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",
+    "chai": "^3.5.0",
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
+    "ignore-styles": "^2.0.0",
+    "jsdom": "^9.2.1",
+    "jsdom-global": "^2.0.0",
     "json-loader": "^0.5.4",
+    "mocha": "^2.5.3",
     "moment": "^2.13.0",
     "postcss-loader": "^0.9.1",
     "precss": "^1.4.0",
     "react": "^15.1.0",
+    "react-addons-test-utils": "^15.1.0",
     "react-dom": "^15.1.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.1"
