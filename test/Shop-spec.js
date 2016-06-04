@@ -7,13 +7,23 @@ import jsdomGlobal from 'jsdom-global'; jsdomGlobal();
 import Shop from '../components/Shop';
 
 describe('Shop component', function () {
-    it('shows correct closing time message', function () {
+    it('renders name', function () {
         var component = TestUtils.renderIntoDocument(
-            <Shop closes="4pm" />
+            <Shop name="Aldgate" closes="4pm" />
         );
 
-        var listItem = TestUtils.findRenderedDOMComponentWithTag(component, 'li');
+        var nameSpan = TestUtils.findRenderedDOMComponentWithClass(component, 'shop__name');
 
-        expect(listItem.textContent).to.equal('closes at 4pm');
+        expect(nameSpan.textContent).to.equal('Aldgate');
+    });
+
+    it('renders closing time', function () {
+        var component = TestUtils.renderIntoDocument(
+            <Shop name="Aldgate" closes="4pm" />
+        );
+
+        var closesSpan = TestUtils.findRenderedDOMComponentWithClass(component, 'shop__closes');
+
+        expect(closesSpan.textContent).to.equal('4pm');
     });
 });

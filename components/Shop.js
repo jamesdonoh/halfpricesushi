@@ -4,14 +4,16 @@ import '../styles/shops.css';
 
 export default class Shop extends React.Component {
     render() {
-        const closes = this.props.closes;
-
         return (
-            <li>closes at {closes}</li>
+            <div className="shop">
+                <span className="shop__name">{this.props.name}</span>
+                <span className="shop__closes">{this.props.closes}</span>
+            </div>
         );
     }
 }
 
 Shop.propTypes = {
+    name: React.PropTypes.string.isRequired,
     closes: React.PropTypes.string.isRequired
 };
