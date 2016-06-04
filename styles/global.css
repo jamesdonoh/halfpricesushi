@@ -1,0 +1,6 @@
+$background: #eee;
+
+body {
+    background-color: $background;
+    margin: 0;
+}

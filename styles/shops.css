@@ -1,5 +1,17 @@
 $blue: #056ef0;
 
+.shop {
+    font-family: 'Noto Sans', sans-serif;
+
+    border: 1px solid silver;
+    padding: 0.8em;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .shop__closes {
-    float: right;
+    background-color: gold;
+    padding: 0.6em;
 }

@@ -2,6 +2,8 @@ import ReactDOM from 'react-dom';
 
 import SHOPS from './data/shops';
 
+import './styles/global.css';
+
 import Shop from './components/Shop';
 
 ReactDOM.render(
