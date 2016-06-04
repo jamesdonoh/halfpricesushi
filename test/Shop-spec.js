@@ -9,7 +9,7 @@ import Shop from '../components/Shop';
 describe('Shop component', function () {
     it('renders name', function () {
         var component = TestUtils.renderIntoDocument(
-            <Shop name="Aldgate" closes="4pm" />
+            <Shop name="Aldgate" closes="20:00" />
         );
 
         var nameSpan = TestUtils.findRenderedDOMComponentWithClass(component, 'shop__name');
@@ -19,11 +19,11 @@ describe('Shop component', function () {
 
     it('renders closing time', function () {
         var component = TestUtils.renderIntoDocument(
-            <Shop name="Aldgate" closes="4pm" />
+            <Shop name="Aldgate" closes="20:00" />
         );
 
         var closesSpan = TestUtils.findRenderedDOMComponentWithClass(component, 'shop__closes');
 
-        expect(closesSpan.textContent).to.equal('4pm');
+        expect(closesSpan.textContent).to.equal('20:00');
     });
 });
