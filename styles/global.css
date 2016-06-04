@@ -1,6 +1,6 @@
-$background: #eee;
+@import 'palette';
 
 body {
-    background-color: $background;
+    background-color: $color4;
     margin: 0;
 }
