@@ -4,3 +4,8 @@ body {
     background-color: white;
     margin: 0;
 }
+
+.clock {
+    font-size: 1.2em;
+    text-align: center;
+}
