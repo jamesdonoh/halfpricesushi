@@ -1,6 +1,6 @@
 @import 'palette';
 
 body {
-    background-color: $color4;
+    background-color: white;
     margin: 0;
 }
