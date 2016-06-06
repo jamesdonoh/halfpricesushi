@@ -38,7 +38,7 @@ export default class App extends React.Component {
         return (
             <div>
                 <Clock time={this.state.time} />
-                <ShopList shops={this.props.shops} day="Monday" />
+                <ShopList shops={this.props.shops} day="Monday" time="21:45" />
             </div>
         );
     }
