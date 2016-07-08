@@ -4,7 +4,7 @@
   "description": "Get your sushi but the price, it is half",
   "main": "main.js",
   "scripts": {
-    "start": "node_modules/.bin/webpack-dev-server",
+    "start": "node_modules/.bin/webpack-dev-server --content-base build/",
     "lint": "node_modules/.bin/eslint components test",
     "test": "node_modules/.bin/mocha"
   },
