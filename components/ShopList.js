@@ -7,13 +7,14 @@ export default class ShopList extends React.Component {
         const time = this.props.time;
         const day = this.props.day;
 
-        const isOpen = (shop) => shop.closes[day] > time;
+        const isOpen = (shop) => shop.times[day] && shop.times[day].closes > time;
 
         const compareClosingTime = (a, b) =>
-            a.closes[day] < b.closes[day] ? -1 : a.closes[day] > b.closes[day] ? 1 : 0;
+            a.times[day].closes < b.times[day].closes ? -1 :
+            a.times[day].closes > b.times[day].closes ? 1 : 0;
 
         const createShop = (shop) => (
-            <Shop key={shop.url} name={shop.name} closes={shop.closes[day]} time={time} />
+            <Shop key={shop.url} name={shop.name} closes={shop.times[day].closes} time={time} />
         );
 
         const shops = this.props.shops
