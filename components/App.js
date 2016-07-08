@@ -4,8 +4,12 @@ import ShopList from './ShopList';
 import Clock from './Clock';
 import '../styles/global.css';
 
+const zeroPad = (num) => num >= 10 ? num : '0' + num;
+
 const formatTime = (date) =>
-    [ date.getHours(), date.getMinutes(), date.getSeconds() ].join(':');
+    [ date.getHours(), date.getMinutes() ]
+    .map(zeroPad)
+    .join(':');
 
 export default class App extends React.Component {
     constructor(props) {
@@ -38,7 +42,7 @@ export default class App extends React.Component {
         return (
             <div>
                 <Clock time={this.state.time} />
-                <ShopList shops={this.props.shops} day="Monday" time="21:45" />
+                <ShopList shops={this.props.shops} day="Monday" time={this.state.time} />
             </div>
         );
     }
