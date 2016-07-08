@@ -14,7 +14,7 @@ export default class ShopList extends React.Component {
             a.times[day].closes > b.times[day].closes ? 1 : 0;
 
         const createShop = (shop) => (
-            <Shop key={shop.url} name={shop.name} closes={shop.times[day].closes} time={time} />
+            <Shop key={shop.id} name={shop.name} closes={shop.times[day].closes} time={time} />
         );
 
         const shops = this.props.shops
