@@ -1,10 +1,9 @@
 @import 'palette';
 
 .shop {
-    font-family: 'Noto Sans', sans-serif;
-    color: $color4;
+    font-family: Helvetica, Arial, sans-serif;
 
-    border: 1px solid $color3;
+    border-bottom: 1px solid silver;
 
     display: flex;
     justify-content: space-between;
@@ -16,7 +15,6 @@
 }
 
 .shop__closes {
-    background-color: $color2;
-    color: $color5;
     padding: 0.6em;
+    font-weight: bold;
 }
