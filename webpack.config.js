@@ -28,6 +28,7 @@ module.exports = {
         'react-dom': 'ReactDOM'
     },
     plugins: [
+        /*
         new webpack.optimize.UglifyJsPlugin({
             minimize: true,
             compress: {
@@ -37,6 +38,7 @@ module.exports = {
                 comments: false,
             },
         }),
+        */
         new ExtractTextPlugin('app.css', {
             allChunks: true
         })
