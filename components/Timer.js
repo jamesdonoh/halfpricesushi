@@ -1,6 +1,6 @@
 import * as timeUtils from './timeUtils';
 
-const UPDATE_MS = 100;
+const UPDATE_MS = 250;
 
 export default class Timer {
     constructor(onTimeChanged) {
