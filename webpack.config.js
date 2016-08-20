@@ -5,7 +5,7 @@ const autoprefixer = require('autoprefixer');
 
 module.exports = {
     entry: './main.js',
-    output: { path: __dirname, filename: 'app.js' },
+    output: { path: './build', filename: 'app.js' },
     module: {
         loaders: [
             {
@@ -28,6 +28,15 @@ module.exports = {
         'react-dom': 'ReactDOM'
     },
     plugins: [
+        new webpack.optimize.UglifyJsPlugin({
+            minimize: true,
+            compress: {
+                warnings: false,
+            },
+            output: {
+                comments: false,
+            },
+        }),
         new ExtractTextPlugin('app.css', {
             allChunks: true
         })
@@ -36,19 +45,3 @@ module.exports = {
         return [precss, autoprefixer];
     }
 };
-/*
-    NB for production, with React inlined in the bundle, delete the 'externals'
-       block above and remove the <script> tags from index.html
-
-    plugins: [
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false,
-            },
-            output: {
-                comments: false,
-            },
-        }),
-    ]
-};
-*/
