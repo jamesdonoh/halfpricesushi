@@ -36,7 +36,6 @@ export default class App extends React.Component {
     render() {
         return (
             <div>
-                <Clock time={this.state.time} day={this.state.day} />
                 <ShopList shops={this.props.shops} day={this.state.day} time={this.state.time} />
             </div>
         );
