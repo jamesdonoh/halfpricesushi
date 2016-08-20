@@ -5,6 +5,8 @@ export default class Clock extends React.Component {
         return (
             <div className="clock">
                 Current time: {this.props.time}
+                <br/>
+                Day: {this.props.day}
             </div>
         );
     }

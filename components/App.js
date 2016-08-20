@@ -1,58 +1,42 @@
 import React from 'react';
 
+import Timer from './Timer';
 import ShopList from './ShopList';
 import Clock from './Clock';
+
 import '../styles/global.css';
-
-const DAYS_OF_WEEK = [ 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' ];
-
-const dayOfWeek = (date) => DAYS_OF_WEEK[date.getDay()];
-
-const zeroPad = (num) => num >= 10 ? num : '0' + num;
-
-const formatTime = (date) =>
-    zeroPad(date.getHours()) + ':' + zeroPad(date.getMinutes());
 
 export default class App extends React.Component {
     constructor(props) {
         super(props);
 
-        const date = new Date();
+        this.timer = new Timer(this.timeChanged.bind(this));
 
         this.state = {
-            day: dayOfWeek(date),
-            time: formatTime(date)
+            day: this.timer.day,
+            time: this.timer.time
         };
-
-        this.tick = this.tick.bind(this);
     }
 
     componentDidMount() {
-        this.timer = setInterval(this.tick, 100);
+        this.timer.start();
     }
 
     componentWillUnmount() {
-        clearInterval(this.timer);
+        this.timer.stop();
     }
 
-    tick() {
-        const newDate = new Date();
-        const newTime = formatTime(newDate);
-        
-        if (newTime !== this.state.time) {
-            const newDay = dayOfWeek(newDate);
-
-            this.setState({
-                day: newDay,
-                time: newTime
-            });
-        }
+    timeChanged() {
+        this.setState({
+            day: this.timer.day,
+            time: this.timer.time
+        });
     }
 
     render() {
         return (
             <div>
-                <Clock time={this.state.time} />
+                <Clock time={this.state.time} day={this.state.day} />
                 <ShopList shops={this.props.shops} day={this.state.day} time={this.state.time} />
             </div>
         );
