@@ -2,9 +2,6 @@ import React from 'react';
 
 import '../styles/shops.css';
 
-// NB 'stateless function' approach, see
-// https://facebook.github.io/react/docs/reusable-components.html#stateless-functions
-
 const timeToMins = (time) => parseInt(time.substr(0, 2)) * 60 + parseInt(time.substr(3, 2));
 
 const minsUntil = (now, to) => timeToMins(to) - timeToMins(now);
@@ -14,10 +11,10 @@ const formatClosing = (currentTime, closes) => {
     return mins < 30 ? mins + ' min' : closes;
 };
 
-const Shop = (props) =>
+const Shop = ({name, currentTime, closes}) =>
     <div className="shop">
-        <span className="shop__name">{props.name}</span>
-        <span className="shop__closes">{formatClosing(props.currentTime, props.closes)}</span>
+        <span className="shop__name">{name}</span>
+        <span className="shop__closes">{formatClosing(currentTime, closes)}</span>
     </div>
 
 Shop.propTypes = {
