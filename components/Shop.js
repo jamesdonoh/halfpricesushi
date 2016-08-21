@@ -11,11 +11,11 @@ const formatClosing = (currentTime, closes) => {
     return mins < 30 ? mins + ' min' : closes;
 };
 
-const formatDistance = (metres) => (metres / 1000).toFixed(1) + 'km';
+const formatDistance = (metres) => metres ? '(' + (metres / 1000).toFixed(1) + 'km)' : null;
 
 const Shop = ({name, currentTime, closes, distance}) =>
     <div className="shop">
-        <span className="shop__name">{name} ({formatDistance(distance)})</span>
+        <span className="shop__name">{name} {formatDistance(distance)}</span>
         <span className="shop__closes">{formatClosing(currentTime, closes)}</span>
     </div>
 

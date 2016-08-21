@@ -41,6 +41,9 @@ export default class ShopList extends React.Component {
         const compareDistance = (a, b) =>
             a.distance < b.distance ? -1 : a.distance > b.distance ? 1 : 0;
 
+        const compareClosingTimeAndDistance = (a, b) =>
+            compareClosingTime(a, b) || compareDistance(a, b);
+
         const addDistance = (shop) => {
             if (location) {
                 shop.distance = haversineDistance(location, shop.location);
@@ -56,8 +59,7 @@ export default class ShopList extends React.Component {
         const shops = this.props.shops
             .map(addDistance)
             .filter(isOpen)
-//            .sort(compareClosingTime)
-            .sort(compareDistance)
+            .sort(compareClosingTimeAndDistance)
             .map(createShop);
 
         return (
