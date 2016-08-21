@@ -4,7 +4,7 @@
  * - rewrite using Date.prototype.toLocaleTimeString?
  */
 
-const DAYS_OF_WEEK = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
+const DAYS_OF_WEEK = 'sun_mon_tue_wed_thu_fri_sat'.split('_');
 
 const zeroPad = (num) => num < 10 ? '0' + num : num.toString();
 
