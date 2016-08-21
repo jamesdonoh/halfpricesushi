@@ -3,6 +3,7 @@ import React from 'react';
 import Timer from './Timer';
 import ShopList from './ShopList';
 import Clock from './Clock';
+import Geolocator from './Geolocator';
 
 import '../styles/global.css';
 
@@ -11,6 +12,7 @@ export default class App extends React.Component {
         super(props);
 
         this.timer = new Timer(this.timeChanged.bind(this));
+        this.geolocator = new Geolocator(this.locationChanged.bind(this));
 
         this.state = {
             day: this.timer.day,
@@ -33,10 +35,16 @@ export default class App extends React.Component {
         });
     }
 
+    locationChanged() {
+        this.setState({
+            location: this.geolocator.location
+        });
+    }
+
     render() {
         return (
             <div>
-                <ShopList shops={this.props.shops} day={this.state.day} time={this.state.time} />
+                <ShopList shops={this.props.shops} day={this.state.day} time={this.state.time} location={this.state.location} />
             </div>
         );
     }
