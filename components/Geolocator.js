@@ -5,7 +5,7 @@ export default class Geolocator {
         if ('geolocation' in navigator) {
             
         } else {
-            // TODO geo not available
+            // TODO handle geo not available
         }
 
         navigator.geolocation.getCurrentPosition(
@@ -30,7 +30,7 @@ export default class Geolocator {
     }
 
     positionError(err) {
-        // TODO geo permission refused
+        // TODO handle geo permission refused
         console.error(err);
     }
 }
