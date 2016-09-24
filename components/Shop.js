@@ -8,14 +8,19 @@ const minsUntil = (now, to) => timeToMins(to) - timeToMins(now);
 
 const formatClosing = (currentTime, closes) => {
     const mins = minsUntil(currentTime, closes);
-    return mins < 30 ? mins + ' min' : closes;
+    return mins < 30 ? `${mins} min` : closes;
 };
 
+const icon = (currentTime, closes) => {
+    return minsUntil(currentTime, closes) <= 30 ? '\u{1F363}\u{1F363}' : '\u{1F363}';
+};
+
+// TODO what is a good pattern for view elements that may not appear?
 const formatDistance = (metres) => metres ? '(' + (metres / 1000).toFixed(1) + 'km)' : null;
 
 const Shop = ({name, currentTime, closes, distance}) =>
     <div className="shop">
-        <span className="shop__name">{name} {formatDistance(distance)}</span>
+        <span className="shop__name">{icon(currentTime, closes)} {name} {formatDistance(distance)}</span>
         <span className="shop__closes">{formatClosing(currentTime, closes)}</span>
     </div>
 
