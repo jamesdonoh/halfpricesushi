@@ -12,9 +12,14 @@
 
 .shop__name {
     padding: 0 0.7em;
+
+    & em {
+        color: silver;
+        font-style: normal;
+    }
 }
 
 .shop__closes {
+    font-size: 1.1em;
     padding: 0.7em;
-    font-weight: bold;
 }
