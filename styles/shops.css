@@ -1,8 +1,6 @@
 @import 'palette';
 
 .shop {
-    font-family: Helvetica, Arial, sans-serif;
-
     border-bottom: 1px solid silver;
 
     display: flex;
@@ -16,6 +14,11 @@
     & em {
         color: silver;
         font-style: normal;
+        padding-left: 0.5em;
+    }
+
+    & strong {
+        padding-right: 0.5em;
     }
 
     & a {
@@ -27,4 +30,8 @@
 .shop__closes {
     font-size: 1.1em;
     padding: 0.7em;
+}
+
+.shop__closes--soon {
+    color: rgb(141, 24, 18);
 }

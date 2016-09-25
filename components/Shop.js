@@ -3,31 +3,43 @@ import React from 'react';
 import '../styles/shops.css';
 
 const timeToMins = (time) => parseInt(time.substr(0, 2)) * 60 + parseInt(time.substr(3, 2));
-
 const minsUntil = (now, to) => timeToMins(to) - timeToMins(now);
+const closesSoon = (currentTime, closes) => minsUntil(currentTime, closes) <= 30;
 
-const formatClosing = (currentTime, closes) => {
-    const mins = minsUntil(currentTime, closes);
-    return mins < 30 ? `${mins} min` : closes;
+const locationUrl = (loc) => `https://maps.google.com/?q=${loc.lat},${loc.long}`;
+
+const ShopDistance = ({distance}) => {
+    const dist = distance ? (distance / 1000).toFixed(1) + 'km' : null;
+    return <em>{dist}</em>
+}
+
+const ShopIcon = ({currentTime, closes}) => {
+    const icon = closesSoon(currentTime, closes) ? '\u{1F363}\u{1F363}' : '\u{1F363}';
+    return <strong>{icon}</strong>
 };
 
-const icon = (currentTime, closes) => {
-    return minsUntil(currentTime, closes) <= 30 ? '\u{1F363}\u{1F363}\u{00a0}' : '\u{1F363}\u{00a0}';
-};
+const ShopCloses = ({currentTime, closes}) => {
+    let classes = 'shop__closes';
+    let formattedClosing = closes;
 
-// TODO what is a good pattern for view elements that may not appear?
-const formatDistance = (metres) => metres ? (metres / 1000).toFixed(1) + 'km' : null;
+    if (closesSoon(currentTime, closes)) {
+        classes += ' shop__closes--soon';
+        formattedClosing = `${minsUntil(currentTime, closes)} min`;
+    }
 
-const linkUrl = (loc) => `https://maps.google.com/?q=${loc.lat},${loc.long}`;
+    return <span className={classes}>{formattedClosing}</span>
+}
 
 const Shop = ({name, currentTime, closes, distance, location}) =>
     <div className="shop">
         <span className="shop__name">
-            <a href={linkUrl(location)}>{icon(currentTime, closes)}
-                {name} <em>{formatDistance(distance)}</em>
+            <a href={locationUrl(location)}>
+                <ShopIcon currentTime={currentTime} closes={closes}/>
+                {name}
+                <ShopDistance distance={distance}/>
             </a>
         </span>
-        <span className="shop__closes">{formatClosing(currentTime, closes)}</span>
+        <ShopCloses currentTime={currentTime} closes={closes}/>
     </div>
 
 Shop.propTypes = {

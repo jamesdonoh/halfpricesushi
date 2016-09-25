@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Timer from './Timer';
+import Header from './Header';
 import ShopList from './ShopList';
 import Clock from './Clock';
 import Geolocator from './Geolocator';
@@ -44,6 +45,7 @@ export default class App extends React.Component {
     render() {
         return (
             <div>
+                <Header/>
                 <ShopList shops={this.props.shops} day={this.state.day} time={this.state.time} location={this.state.location} />
             </div>
         );

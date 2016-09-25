@@ -1,0 +1,9 @@
+header {
+    background-color: rgb(141, 24, 18);
+    color: white;
+    padding: 0.4em;
+    font-size: 1.4em;
+    text-align: center;
+    border-bottom: 1.5px solid rgb(100, 10, 0);
+    text-shadow: rgb(100, 0, 0) 2px 2px 0;
+}
