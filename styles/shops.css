@@ -17,6 +17,11 @@
         color: silver;
         font-style: normal;
     }
+
+    & a {
+        color: black;
+        text-decoration: none;
+    }
 }
 
 .shop__closes {

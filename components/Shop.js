@@ -16,11 +16,17 @@ const icon = (currentTime, closes) => {
 };
 
 // TODO what is a good pattern for view elements that may not appear?
-const formatDistance = (metres) => metres ? (metres / 1000).toFixed(1) + 'km away' : null;
+const formatDistance = (metres) => metres ? (metres / 1000).toFixed(1) + 'km' : null;
 
-const Shop = ({name, currentTime, closes, distance}) =>
+const linkUrl = (loc) => `https://maps.google.com/?q=${loc.lat},${loc.long}`;
+
+const Shop = ({name, currentTime, closes, distance, location}) =>
     <div className="shop">
-        <span className="shop__name">{icon(currentTime, closes)} {name} <em>{formatDistance(distance)}</em></span>
+        <span className="shop__name">
+            <a href={linkUrl(location)}>{icon(currentTime, closes)}
+                {name} <em>{formatDistance(distance)}</em>
+            </a>
+        </span>
         <span className="shop__closes">{formatClosing(currentTime, closes)}</span>
     </div>
 

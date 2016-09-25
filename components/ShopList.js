@@ -29,7 +29,7 @@ export default class ShopList extends React.Component {
         };
 
         const createShop = (shop) => (
-            <Shop key={shop.id} name={shop.name} closes={shop.times[day].closes} currentTime={time} distance={shop.distance} />
+            <Shop key={shop.id} name={shop.name} closes={shop.times[day].closes} currentTime={time} distance={shop.distance} location={shop.location} />
         );
 
         const shops = this.props.shops
