@@ -8,39 +8,42 @@ const closesSoon = (currentTime, closes) => minsUntil(currentTime, closes) <= 30
 
 const locationUrl = (loc) => `https://maps.google.com/?q=${loc.lat},${loc.long}`;
 
+const ShopIcon = ({currentTime, closes}) => {
+    const icon = closesSoon(currentTime, closes) ? '\u{1F363}\u{1F363}' : '\u{1F363}';
+    return <td className="shop__icon">{icon}</td>
+};
+
+const ShopName = ({name, location, distance}) =>
+    <td className="shop__name">
+        <a href={locationUrl(location)}>
+            {name}
+            <ShopDistance distance={distance}/>
+        </a>
+    </td>
+
 const ShopDistance = ({distance}) => {
     const dist = distance ? (distance / 1000).toFixed(1) + 'km' : null;
     return <em>{dist}</em>
 }
 
-const ShopIcon = ({currentTime, closes}) => {
-    const icon = closesSoon(currentTime, closes) ? '\u{1F363}\u{1F363}' : '\u{1F363}';
-    return <strong>{icon}</strong>
-};
-
 const ShopCloses = ({currentTime, closes}) => {
-    let classes = 'shop__closes';
     let formattedClosing = closes;
-
     if (closesSoon(currentTime, closes)) {
-        classes += ' shop__closes--soon';
         formattedClosing = `${minsUntil(currentTime, closes)} min`;
     }
 
-    return <span className={classes}>{formattedClosing}</span>
+    return <td className="shop__closes">{formattedClosing}</td>
 }
 
+const shopClass = (currentTime, closes) =>
+    closesSoon(currentTime, closes) ? 'shop shop--halfprice' : 'shop';
+
 const Shop = ({name, currentTime, closes, distance, location}) =>
-    <div className="shop">
-        <span className="shop__name">
-            <a href={locationUrl(location)}>
-                <ShopIcon currentTime={currentTime} closes={closes}/>
-                {name}
-                <ShopDistance distance={distance}/>
-            </a>
-        </span>
+    <tr className={shopClass(currentTime, closes)}>
+        <ShopIcon currentTime={currentTime} closes={closes}/>
+        <ShopName name={name} location={location} distance={distance}/>
         <ShopCloses currentTime={currentTime} closes={closes}/>
-    </div>
+    </tr>
 
 Shop.propTypes = {
     name: React.PropTypes.string.isRequired,

@@ -1,24 +1,25 @@
 @import 'palette';
 
-.shop {
-    border-bottom: 1px solid silver;
+.shoplist {
+    border-collapse: collapse;
+    width: 100%;
+}
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.shoplist tr {
+    border-bottom: 1px solid silver;
+    height: 3em;
+}
+
+.shop__icon {
+    text-align: right;
+    padding-right: 0.5em;
 }
 
 .shop__name {
-    padding: 0 0.7em;
-
     & em {
         color: silver;
         font-style: normal;
         padding-left: 0.5em;
-    }
-
-    & strong {
-        padding-right: 0.5em;
     }
 
     & a {
@@ -28,10 +29,12 @@
 }
 
 .shop__closes {
-    font-size: 1.1em;
-    padding: 0.7em;
+    text-align: right;
+    padding-right: 0.5em;
 }
 
-.shop__closes--soon {
-    color: rgb(141, 24, 18);
+.shop--halfprice {
+    .shop__closes {
+        color: rgb(141, 24, 18);
+    }
 }
